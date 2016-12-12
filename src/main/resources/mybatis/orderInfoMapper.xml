@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pa.jk.pay.dao.OrderInfoXmlMapper">
+   <!--  <resultMap id="order"  type="com.pa.jk.pay.bean.OrderInfo">
+        <result column="ID" property="id" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+        <result column="PARTNER" property="partner" typeHandler="org.apache.ibatis.type.LongTypeHandler"/>
+        <result column="SELLER_ID" property="sellerId" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="ORDER_NO" property="orderNo" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="SUBJECT" property="subject" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="BODY" property="body" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="TOTAL_FEE" property="totalFee" typeHandler="org.apache.ibatis.type.DoubleTypeHandler"/>
+        <result column="CTIME" property="ctime" typeHandler="org.apache.ibatis.type.DateTypeHandler"/>
+    </resultMap>
+
+     <delete id="clear">
+        DELETE FROM dc_user
+    </delete>
+
+    <select id="getUsers" resultMap="user">
+        SELECT id, user_name, user_type FROM dc_user
+    </select>
+  <insert id="save" parameterType="com.pa.jk.pay.bean.OrderInfo">
+        INSERT INTO test.`ORDER_INFO`(PARTNER, SELLER_ID,ORDER_NO,SUBJECT,BODY,TOTAL_FEE)
+        VALUES(#{partner}, #{sellerId}, #{orderNo}, #{subject}, #{body}, #{totalFee})
+    </insert> -->
+   <select id="getOrderInfoBySellerId"  resultType="com.pa.jk.pay.bean.OrderInfo">
+       select * from test.`ORDER_INFO` where SELLER_ID = #{sellerId}
+    </select>
+
+
+    <!--
+  
+<insert id="testSave" parameterType="String">
+        INSERT INTO test.ORDER_INFO(PARTNER, SELLER_ID,ORDER_NO,SUBJECT,BODY,TOTAL_FEE)
+        VALUES(#{partner}, #{sellerId}, #{orderNo}, #{subject}, #{body}, #{totalFee})
+    </insert>
+
+ update id="updateUser" parameterType="user">
+        UPDATE dc_user SET user_name = #{userNmae},
+        user_type = #{userType, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
+        WHERE id = #{id}
+    </update>
+ -->
+</mapper>

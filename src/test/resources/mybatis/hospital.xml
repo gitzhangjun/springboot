@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pa.jk.map.dao.HospitalDao">
+    <resultMap id="hospital"  type="com.pa.jk.map.bean.Hospital">
+        <result column="PARTNER_ID" property="partnerId" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+        <result column="HOSPITAL_ID" property="hospitalId" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+        <result column="CN_NAME" property="cnName" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="EN_NAME" property="enName" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="CN_ADDRESS" property="cnAddress" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+          <result column="EN_ADDRESS" property="enAddress" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="COUNTRY_CODE" property="countryCode" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+        <result column="PROVINCE_CODE" property="provinceCode" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+        <result column="CITY_CODE" property="cityCode" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+        <result column="REGION_CODE" property="regionCode" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="REGION_NAME" property="regionName" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="LONGITUDE" property="longitude" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+        <result column="LATITUDE" property="latitude" typeHandler="org.apache.ibatis.type.StringTypeHandler"/>
+         <result column="CONFIDENCE" property="confidence" typeHandler="org.apache.ibatis.type.IntegerTypeHandler"/>
+    </resultMap>
+ 
+   <select id="loadAll"  resultMap="hospital">
+        SELECT PARTNER_ID, HOSPITAL_ID , CN_NAME , EN_NAME , CN_ADDRESS , EN_ADDRESS, COUNTRY_CODE , PROVINCE_CODE , CITY_CODE,REGION_CODE,REGION_NAME,LONGITUDE,LATITUDE,CONFIDENCE FROM HOSPITAL 
+    </select>
+
+    <insert id="save" parameterType="com.pa.jk.map.bean.Hospital" useGeneratedKeys="true" keyProperty="id">
+    
+        INSERT INTO HOSPITAL(PARTNER_ID, HOSPITAL_ID , CN_NAME , EN_NAME , CN_ADDRESS , EN_ADDRESS, COUNTRY_CODE , PROVINCE_CODE , CITY_CODE,REGION_CODE,REGION_NAME,LONGITUDE,LATITUDE,CONFIDENCE)
+        VALUES(#{partnerId,jdbcType=BIGINT} , #{hospitalId,jdbcType=BIGINT} , #{cnName} , #{enName} , #{cnAddress} , #{enAddress} , #{countryCode,jdbcType=BIGINT} , #{provinceCode,jdbcType=BIGINT} , #{cityCode,jdbcType=BIGINT} , #{regionCode},#{regionName},#{longitude},#{latitude},#{confidence,jdbcType=BIGINT})
+    </insert>
+ 
+</mapper>
